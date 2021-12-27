@@ -4,7 +4,7 @@ add_executable(${PROJECT_NAME})
 target_sources(${PROJECT_NAME}
     PUBLIC
         ${TEST_INCLUDE_DIR}/test/${PROJECT_NAME}.c
-        ${UNITY_TEST_RUNNER_PATH}/${PROJECT_NAME}_runner.c
+        ${UNITY_TEST_RUNNER_PATH}/${PROJECT_NAME}_arm_runner.c
 
         ${TEST_MOCK_SOURCES}
         ${TEST_SOURCES}
