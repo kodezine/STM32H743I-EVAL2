@@ -1,0 +1,8 @@
+# CMAKE specific excludes
+
+compile_commands.json
+[bB]uild
+
+# Project specific excludes
+.mxproject
+.DS_Store

@@ -1,0 +1,38 @@
+{
+    "configurations": [
+    {
+        "cwd": "${workspaceRoot}",
+        "executable": "./build/tests/test_i2c/test_i2c.elf",
+        "name": "MAC Debug",
+        "request": "launch",
+        "type": "cortex-debug",
+        "armToolchainPath": "/Applications/ARM/bin",
+        "servertype": "jlink",
+        "ipAddress": "192.168.50.52",
+        "interface": "swd",
+        "device": "STM32H743XI",
+        "svdFile": "${workspaceRoot}/linker/STM32H743.svd",
+        "runToMain": true,
+        "preRestartCommands": [
+            "file ${workspaceRoot}/build/tests/test_i2c/test_i2c.elf",
+            "load",
+            "add-symbol-file ${workspaceRoot}/build/tests/test_i2c/test_i2c.elf 0x08000000",
+            "enable breakpoint",
+            "monitor reset"
+        ],
+        "swoConfig": {
+            "enabled":true,
+            "source":"probe",
+            "swoFrequency":4800000,
+            "cpuFrequency":480000000,
+            "decoders": [
+            {
+                "port": 0,
+                "type": "console",
+                "label": "Output"
+            }
+            ]
+        }
+    }
+    ]
+}

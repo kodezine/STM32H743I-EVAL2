@@ -1,0 +1,62 @@
+name: Jira Issue Report
+
+on:
+  pull_request:
+    types: [assigned, opened, synchronize, reopened]
+
+jobs:
+  jira-issue-linkage:
+    name: All commits are linked to jira issues
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Get Token
+        id: get_workflow_token
+        uses: peter-murray/workflow-application-token-action@v1
+        with:
+          application_id: ${{ secrets.GH_PRIVATE_ACTIONS_APP_ID }}
+          application_private_key: ${{ secrets.GH_PRIVATE_ACTIONS_PRIVATE_KEY }}
+
+      - name: Checkout GitHub Action Repo
+        uses: actions/checkout@v2
+        with:
+          repository: Hillrom-Enterprise/action-jira-cloud
+          ref: dev
+          token: ${{ steps.get_workflow_token.outputs.token }}
+          path: .github/actions/jira-issue-linkage
+
+      - uses: LouisBrunner/checks-action@v1.1.2
+        id: init
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Jira Issue Report
+          status: in_progress
+      - name: Run Validation
+        uses: ./.github/actions/jira-issue-linkage
+        id: validation
+        env:
+          DEBUG: "true"
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          debug: 'true'
+          jira-secret: ${{ secrets.JIRA_COMMIT_VALIDATION_SECRET }}
+
+      - uses: LouisBrunner/checks-action@v1.1.2
+        if: failure()
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          check_id: ${{ steps.init.outputs.check_id }}
+          conclusion: action_required
+          action_url: https://hill-rom.atlassian.net
+          # actions: ${{ steps.validation.outputs.failed_commit_actions }}
+          output: |
+            {"summary":${{ steps.validation.outputs.failed_commits }}}
+      - uses: LouisBrunner/checks-action@v1.1.2
+        if: success()
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          check_id: ${{ steps.init.outputs.check_id }}
+          conclusion: success
+          output: |
+            {"summary":${{ steps.validation.outputs.successful_issues }}}

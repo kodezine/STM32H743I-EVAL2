@@ -1,0 +1,6 @@
+[
+    {
+        "name": "GNU ARM CC",
+        "toolchainFile": "cmake/gcc_cortexM7.cmake"
+    }
+]

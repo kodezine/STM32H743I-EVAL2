@@ -1,0 +1,15 @@
+buildType:
+  default: debug
+  choices:
+    debug:
+      short: Debug
+      long: Emit debug information without performing optimizations
+      buildType: Debug
+    release:
+      short: Release
+      long: Enable optimization omit debug information
+      buildType: Release
+    test:
+      short: Test
+      long: Enable peripheral test executables
+      buildType: Test

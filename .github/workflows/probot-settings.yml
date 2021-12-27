@@ -1,0 +1,40 @@
+name: Enforce repository settings just once
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+    - '.github/workflows/probot-settings.yml'
+    - '.github/settings.yml'
+  workflow_dispatch:
+
+jobs:
+  probot-settings:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Get Token
+      id: get_workflow_token
+      uses: peter-murray/workflow-application-token-action@v1
+      with:
+        application_id: ${{ secrets.REPO_SETUP_APPLICATION_ID }}
+        application_private_key: ${{ secrets.REPO_SETUP_APPLICATION_PRIVATE_KEY }}
+    - name: Run probot-settings
+      uses: nirnanaaa/actions-settings@master
+      if: endsWith(github.ref, '/main') && ! endsWith(github.repository, '-template')
+      env:
+        GITHUB_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
+        DEBUG: "true"
+
+
+    # - name: Remove workflow file from master branch
+    #   run: rm ./.github/workflows/probot-settings.yml
+    #   if: endsWith(github.ref, '/main') && ! endsWith(github.repository, '-template')
+
+    # - name: Commit changes
+    #   uses: elstudio/actions-js-build/commit@v3
+    #   env:
+    #     GITHUB_TOKEN: ${{ steps.get_workflow_token.outputs.token }}

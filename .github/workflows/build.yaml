@@ -1,0 +1,101 @@
+name: Build
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    # use the latest WSL-compatible container from https://github.com/Hillrom-Enterprise/surgical-baseimages/blob/main/images/forward-dev-base/Dockerfile
+    # to execute all commands
+    container:
+      image: ghcr.io/hillrom-enterprise/surgical-baseimages/forward:latest
+      credentials:
+        username: "USERNAME"
+        password: "${{ secrets.GITHUB_TOKEN }}"
+    steps:
+
+    # check out our current branches' source code
+    - uses: actions/checkout@v2
+
+    # get a temporary github token, that can be used to fetch other repositories (dependencies)
+    - name: Get a github token
+      id: get_workflow_token
+      uses: peter-murray/workflow-application-token-action@v1
+      with:
+        application_id: ${{ secrets.GH_PRIVATE_ACTIONS_APP_ID }}
+        application_private_key: ${{ secrets.GH_PRIVATE_ACTIONS_PRIVATE_KEY }}
+
+    # configure git to use the github token from the previous step
+    # force git to use HTTPs transport instead of SSH (git rewrite)
+    - uses: fusion-engineering/setup-git-credentials@v2
+      with:
+        credentials: https://x-access-token:${{ steps.get_workflow_token.outputs.token }}@github.com/
+
+    # run our own scripts
+
+    # configure our application for prototype_a
+    # before that, let's ensure our compiler path is set correctly (github doesn't use our "build" user)
+    - name: configure Prototype A
+      run: |
+        export ARM_GCC_ROOT_FOLDER=/home/build/gcc_arm
+        echo ${ARM_GCC_ROOT_FOLDER}
+        cd prototype_a
+        cmake -H. -Bbuild -DCMAKE_TOOLCHAIN_FILE=./cmake/gcc_cortexM7.cmake -DCMAKE_BUILD_TYPE:STRING=Debug -G Ninja \
+        -DBOARD_TYPE=prototype_a
+    
+    # build the app
+    - name: build Prototype A
+      run: |
+        export ARM_GCC_ROOT_FOLDER=/home/build/gcc_arm
+        cd prototype_a
+        cmake --build build --config Debug -j
+
+    # configure our application for prototype_b
+    # before that, let's ensure our compiler path is set correctly (github doesn't use our "build" user)
+    - name: configure Prototype B
+      run: |
+        export ARM_GCC_ROOT_FOLDER=/home/build/gcc_arm
+        echo ${ARM_GCC_ROOT_FOLDER}
+        cd prototype_b
+        cmake -H. -Bbuild -DCMAKE_TOOLCHAIN_FILE=./cmake/gcc_cortexM7.cmake -DCMAKE_BUILD_TYPE:STRING=Debug -G Ninja \
+        -DBOARD_TYPE=prototype_b
+    
+    # build the app
+    - name: build Prototype B
+      run: |
+        export ARM_GCC_ROOT_FOLDER=/home/build/gcc_arm
+        cd prototype_b
+        cmake --build build --config Debug -j
+
+    # configure our application for eval board
+    # before that, let's ensure our compiler path is set correctly (github doesn't use our "build" user)
+    - name: configure eval board
+      run: |
+        export ARM_GCC_ROOT_FOLDER=/home/build/gcc_arm
+        echo ${ARM_GCC_ROOT_FOLDER}
+        cd stm32h743ieval2
+        cmake -H. -Bbuild -DCMAKE_TOOLCHAIN_FILE=./cmake/gcc_cortexM7.cmake -DCMAKE_BUILD_TYPE:STRING=Debug -G Ninja \
+        -DBOARD_TYPE=stm32h743ieval2
+    
+    # build the app
+    - name: build eval board
+      run: |
+        export ARM_GCC_ROOT_FOLDER=/home/build/gcc_arm
+        cd stm32h743ieval2
+        cmake --build build --config Debug -j
+
+
+    - name: Archive artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: build
+        path: |
+          build/**/*.elf
+          build/**/*.map
+          build/**/*.lst
+          !build/CMakeCache.txt
+          !build/CMakeFiles
+        retention-days: 5
+

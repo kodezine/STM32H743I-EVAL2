@@ -1,0 +1,53 @@
+repository:
+  topics: security-enabled, surgical, jira-issue-check-enabled, project-forward, forward, pstplatform
+  default_branch: main
+  has_issues: false
+  has_wiki: false
+  allow_merge_commit: false
+  enable_vulnerability_alerts: false
+  delete_branch_on_merge: true
+
+teams:
+- name: surgical-forward-external
+  # * `maintain` - Recommended for project managers who need to manage the repository without access to sensitive or destructive actions.
+  permission: maintain
+- name: surgical-precision-positioning
+  # * `maintain` - Recommended for project managers who need to manage the repository without access to sensitive or destructive actions.
+  permission: maintain
+- name: surgical-devops
+  # The permission to grant the team. Can be one of:
+  # * `pull` - can pull, but not push to or administer this repository.
+  # * `push` - can pull and push, but not administer this repository.
+  # * `admin` - can pull, push and administer this repository.
+  # * `maintain` - Recommended for project managers who need to manage the repository without access to sensitive or destructive actions.
+  # * `triage` - Recommended for contributors who need to proactively manage issues and pull requests without write access.
+  permission: admin
+
+branches:
+  - name: main
+    protection:
+      # Required. Require at least one approving review on a pull request, before merging. Set to null to disable.
+      required_pull_request_reviews:
+        # The number of approvals required. (1-6)
+        required_approving_review_count: 1
+        # Dismiss approved reviews automatically when a new commit is pushed.
+        dismiss_stale_reviews: true
+        # Blocks merge until code owners have reviewed.
+        require_code_owner_reviews: true
+        restrictions: null
+      # Required. Require status checks to pass before merging. Set to null to disable
+      required_status_checks:
+        # Required. Require branches to be up to date before merging.
+        strict: true
+        # Required. The list of status checks to require in order to merge into this branch
+        contexts:
+        - All commits are linked to jira issues
+      # Required. Enforce all configured restrictions for administrators. Set to true to enforce required status checks for repository administrators. Set to null to disable.
+      enforce_admins: true
+      # Prevent merge commits from being pushed to matching branches
+      required_linear_history: true
+      restrictions:
+        apps:
+        - gh-repository-settings
+        users: []
+        teams: []
