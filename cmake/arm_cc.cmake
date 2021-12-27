@@ -3,7 +3,7 @@ add_executable(${PROJECT_NAME})
 
 target_sources(${PROJECT_NAME}
     PUBLIC
-        ${TEST_SOURCE_DIR}/${PROJECT_NAME}.c
+        ${TEST_INCLUDE_DIR}/test/${PROJECT_NAME}.c
         ${UNITY_TEST_RUNNER_PATH}/${PROJECT_NAME}_runner.c
 
         ${TEST_MOCK_SOURCES}
@@ -12,8 +12,15 @@ target_sources(${PROJECT_NAME}
 
 target_include_directories(${PROJECT_NAME}
     PUBLIC
+        ${banshi_SOURCE_DIR}/port
+        ${CMAKE_CURRENT_LIST_DIR}/../AO/canopen
+        ${CMAKE_CURRENT_LIST_DIR}/../common/inc
+        ${CMAKE_CURRENT_LIST_DIR}/../common/test
+
         $ENV{MOCK_OUT}
     PRIVATE
+        ${canopen_SOURCE_DIR}/include
+        ${canopen_SOURCE_DIR}/target
         ${TEST_MOCK_INCLUDES}
         ${TEST_INCLUDE_DIR}
         ${OTHER_INCLUDE_DIR}
@@ -24,6 +31,7 @@ target_link_libraries(${PROJECT_NAME}
     cmock
 
     hal
+    blinky_unity
 )
 
 set (CMAKE_EXECUTABLE_SUFFIX ".elf")
