@@ -1,0 +1,64 @@
+{
+    "version": 2,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 20,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "debug-b-guarded",
+            "displayName": "Debug BANSHI library on Prototype-B (guarded upstream dependencies)",
+            "description": "debug-b-guarded",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
+                "CMAKE_TOOLCHAIN_FILE": "./cmake/gcc_cortexM7.cmake",
+                "BOARD_TYPE": "prototype_b"
+            }
+        },
+        {
+            "name": "release-b-guarded",
+            "displayName": "Release BANSHI library Artifact on Prototype-B (guarded upstream dependencies)",
+            "description": "release-b-guarded",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
+                "CMAKE_TOOLCHAIN_FILE": "./cmake/gcc_cortexM7.cmake",
+                "BOARD_TYPE": "prototype_b"
+            }
+        },
+        {
+            "name": "hwtest-b-guarded",
+            "displayName": "BANSHI test apps on prototype B (guarded upstream dependencies)",
+            "description": "hwtest-b-guarded",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
+                "CMAKE_TOOLCHAIN_FILE": "./cmake/gcc_cortexM7.cmake",
+                "BOARD_TYPE": "prototype_b",
+                "HW_UNIT_TESTS": "ON"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "debug-b-guarded",
+            "configurePreset": "debug-b-guarded"
+        },
+        {
+           "name": "release-b-guarded",
+           "configurePreset": "release-b-guarded"
+        },
+        {
+            "name": "hwtest-b-guarded",
+            "configurePreset": "hwtest-b-guarded"
+        }
+    ]
+}

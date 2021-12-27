@@ -1,0 +1,31 @@
+{
+    "version": 2,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 20,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "hwtest-fluid",
+            "displayName": "Hardware Test BANSHI library  on Prototype-A  (fluid platform PLAT-XXX dependencies)",
+            "description": "use as template to copy from, modify the dependency branches and this field, never check in",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
+                "CMAKE_TOOLCHAIN_FILE": "./cmake/gcc_cortexM7.cmake",
+                "GITHUB_BRANCH_HAL": "PLAT-XXX-replace-here",
+                "GITHUB_BRANCH_OS2": "main",
+                "BOARD_TYPE": "prototype_a"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "hwtest-fluid",
+            "configurePreset": "hwtest-fluid"
+        }
+    ]
+}
