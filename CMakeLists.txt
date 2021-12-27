@@ -78,7 +78,7 @@ target_include_directories(${PROJECT_NAME}
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}>
 )
 
-target_compile_definitions(${PROJECT_NAME} 
+target_compile_definitions(${PROJECT_NAME}
     PUBLIC
         USE_HAL_DRIVER
         STM32H743xx
@@ -104,7 +104,7 @@ set(${PROJECT_NAME}_PUBLIC_HEADERS
 )
 
 set_target_properties(${PROJECT_NAME}
-    PROPERTIES 
+    PROPERTIES
         C_STANDARD          11
         C_STANDARD_REQUIRED ON
         C_EXTENSIONS        OFF
@@ -149,7 +149,7 @@ target_compile_options(${PROJECT_NAME}
 
 write_basic_package_version_file(${PROJECT_NAME}ConfigVersion.cmake
     VERSION       ${PROJECT_VERSION}
-    COMPATIBILITY SameMajorVersion 
+    COMPATIBILITY SameMajorVersion
 )
 set(${PROJECT_NAME}_LINKER_SCRIPT "STM32H743XIHx_FLASH.ld" CACHE STRING "")
 set(${PROJECT_NAME}_LINKER_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cubemx" CACHE STRING "")
@@ -157,6 +157,10 @@ set(${PROJECT_NAME}_LINKER_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cubemx" CACHE STRIN
 include(CMakePrintHelpers)
 cmake_print_variables(${PROJECT_NAME}_LINKER_SCRIPT)
 cmake_print_variables(${PROJECT_NAME}_LINKER_PATH)
+
+if(HW_UNIT_TESTS)
+    include(cmake/hw_unit_tests.cmake)
+endif()
 
 else()
     message(FATAL_ERROR "${PROJECT_NAME} can only compile with ARM cross compiler, please use appropriate toolchain.")
