@@ -7,9 +7,9 @@
     },
     "configurePresets": [
         {
-            "name": "001_NewOne",
-            "displayName": "001_NewOne",
-            "description": "001_NewOne",
+            "name": "001_NewBranch",
+            "displayName": "001_NewBranch",
+            "description": "001_NewBranch",
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/build/${presetName}",
             "cacheVariables": {
@@ -23,8 +23,8 @@
     ],
     "buildPresets": [
         {
-            "name": "001_NewOne",
-            "configurePreset": "001_NewOne"
+            "name": "001_NewBranch",
+            "configurePreset": "001_NewBranch"
         }
     ]
 }
