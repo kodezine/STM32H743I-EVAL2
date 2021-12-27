@@ -7,7 +7,7 @@ project(
 
 # Add test sources here ...
 set(TEST_SOURCES
-    ${CMAKE_CURRENT_SOURCE_DIR}/../blinky_unity.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../cubemx/Core/Src/stm32h7xx_it.c
 )
 
 # DO NOT ADD ANY-THING IN THE VARIABLE BELOW
@@ -45,6 +45,13 @@ execute_process(
 
 if(CMAKE_SYSTEM_PROCESSOR)
     if("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "ARM")
+    # substitute main with app_main for arm executable in the runner
+    file(READ ${UNITY_TEST_RUNNER_PATH}/${PROJECT_NAME}_runner.c file_content)
+    #message("Input:\n${file_content}")
+    set (file_content_res)
+    string(REPLACE "main" "app_main" file_content_res "${file_content}")
+    #message("Output:\n${file_content_res}")
+    file(WRITE "${UNITY_TEST_RUNNER_PATH}/${PROJECT_NAME}_arm_runner.c" "${file_content_res}")
         include(${arm_cc_PATH}/arm_cc.cmake)
     else()
 #        include(${x86_64_cc_PATH}/x86_64_cc.cmake)
