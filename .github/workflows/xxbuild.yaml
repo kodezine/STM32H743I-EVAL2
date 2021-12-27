@@ -6,6 +6,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        configs: [release-b-guarded, debug-b-guarded, hwtest-b-guarded]
 
     # use the latest WSL-compatible container from https://github.com/Hillrom-Enterprise/surgical-baseimages/blob/main/images/forward-dev-base/Dockerfile
     # to execute all commands
@@ -34,24 +38,6 @@ jobs:
         credentials: https://x-access-token:${{ steps.get_workflow_token.outputs.token }}@github.com/
 
     # run our own scripts
-
-    # configure our application for prototype_a
-    # before that, let's ensure our compiler path is set correctly (github doesn't use our "build" user)
-    - name: configure Prototype A
-      run: |
-        export ARM_GCC_ROOT_FOLDER=/home/build/gcc_arm
-        echo ${ARM_GCC_ROOT_FOLDER}
-        cd prototype_a
-        cmake -H. -Bbuild -DCMAKE_TOOLCHAIN_FILE=./cmake/gcc_cortexM7.cmake -DCMAKE_BUILD_TYPE:STRING=Debug -G Ninja \
-        -DBOARD_TYPE=prototype_a
-    
-    # build the app
-    - name: build Prototype A
-      run: |
-        export ARM_GCC_ROOT_FOLDER=/home/build/gcc_arm
-        cd prototype_a
-        cmake --build build --config Debug -j
-
     # configure our application for prototype_b
     # before that, let's ensure our compiler path is set correctly (github doesn't use our "build" user)
     - name: configure Prototype B
