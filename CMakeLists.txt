@@ -160,6 +160,7 @@ cmake_print_variables(${PROJECT_NAME}_LINKER_PATH)
 
 if(HW_UNIT_TESTS)
     include(cmake/hw_unit_tests.cmake)
+    add_subdirectory(unity/test)
 endif()
 
 else()
