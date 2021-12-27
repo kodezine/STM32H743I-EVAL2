@@ -8,5 +8,3 @@ include(cmake/cmock.cmake)
 include(cmake/MockList.cmake)
 
 add_subdirectory(unity)
-
-#add_subdirectory(unity/tests)

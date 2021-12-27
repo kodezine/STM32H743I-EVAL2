@@ -30,7 +30,6 @@ include(${CMAKE_CURRENT_LIST_DIR}/utils.cmake)
 set(MOCKS_TEMPORARY_PATH ${CMAKE_CURRENT_BINARY_DIR}/tmp CACHE PATH "Path to temp mocks")
 set(PERL_SH_PATH ${CMAKE_CURRENT_LIST_DIR} CACHE PATH "Path to perl script")
 set(CREATE_MOCKS_RUBY_PATH ${CMAKE_CURRENT_LIST_DIR} CACHE PATH "Path to ruby script")
-set(CREATE_RUNNER_RUBY_PATH ${CMAKE_CURRENT_LIST_DIR} CACHE PATH "Path to ruby script")
 set(x86_64_cc_PATH ${CMAKE_CURRENT_LIST_DIR} CACHE PATH "Path to x86_64.cmake script")
 set(arm_cc_PATH ${CMAKE_CURRENT_LIST_DIR} CACHE PATH "Path to x86_64.cmake script")
 

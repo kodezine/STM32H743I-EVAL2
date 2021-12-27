@@ -1,5 +1,4 @@
 # CMAKE specific excludes
-
 compile_commands.json
 [bB]uild
 
@@ -7,3 +6,6 @@ compile_commands.json
 .mxproject
 .DS_Store
 CMakeUserPresets.json
+
+# vscode
+.vscode

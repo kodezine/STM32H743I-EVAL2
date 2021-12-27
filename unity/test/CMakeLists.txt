@@ -39,22 +39,18 @@ generate_mocks(TEST_MOCK_HEADERS
 # Reconfigure the unity to use this as runner for this project
 set(UNITY_TEST_RUNNER_PATH ${CMAKE_CURRENT_BINARY_DIR}/runner)
 file(MAKE_DIRECTORY ${UNITY_TEST_RUNNER_PATH})
-execute_process(
-    COMMAND ruby ${CREATE_RUNNER_RUBY_PATH}/create_runner.rb ${CMAKE_CURRENT_LIST_DIR}/${PROJECT_NAME}.c ${UNITY_TEST_RUNNER_PATH}/${PROJECT_NAME}_runner.c
-)
 
 if(CMAKE_SYSTEM_PROCESSOR)
     if("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "ARM")
-    # substitute main with app_main for arm executable in the runner
-    file(READ ${UNITY_TEST_RUNNER_PATH}/${PROJECT_NAME}_runner.c file_content)
-    #message("Input:\n${file_content}")
-    set (file_content_res)
-    string(REPLACE "main" "app_main" file_content_res "${file_content}")
-    #message("Output:\n${file_content_res}")
-    file(WRITE "${UNITY_TEST_RUNNER_PATH}/${PROJECT_NAME}_arm_runner.c" "${file_content_res}")
-        include(${arm_cc_PATH}/arm_cc.cmake)
+        execute_process(
+            COMMAND ruby ${unity_SOURCE_DIR}/auto/generate_test_runner.rb --main_name=app_main ${CMAKE_CURRENT_LIST_DIR}/${PROJECT_NAME}.c ${UNITY_TEST_RUNNER_PATH}/${PROJECT_NAME}_runner.c
+        )
+       include(${arm_cc_PATH}/arm_cc.cmake)
     else()
-#        include(${x86_64_cc_PATH}/x86_64_cc.cmake)
+        execute_process(
+            COMMAND ruby ${unity_SOURCE_DIR}/auto/generate_test_runner.rb --main_name=main ${CMAKE_CURRENT_LIST_DIR}/${PROJECT_NAME}.c ${UNITY_TEST_RUNNER_PATH}/${PROJECT_NAME}_runner.c
+        )
+        include(${x86_64_cc_PATH}/x86_64_cc.cmake)
     endif()
 else()
     message(STATUS "[${PROJECT_NAME}] compiling with unknown architecture")
