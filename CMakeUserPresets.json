@@ -7,9 +7,9 @@
     },
     "configurePresets": [
         {
-            "name": "001_NewBranch",
-            "displayName": "001_NewBranch",
-            "description": "001_NewBranch",
+            "name": "2",
+            "displayName": "2",
+            "description": "Unit Test with Unity",
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/build/${presetName}",
             "cacheVariables": {
@@ -23,8 +23,8 @@
     ],
     "buildPresets": [
         {
-            "name": "001_NewBranch",
-            "configurePreset": "001_NewBranch"
+            "name": "2",
+            "configurePreset": "2"
         }
     ]
 }

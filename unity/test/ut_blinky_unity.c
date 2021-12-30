@@ -9,5 +9,5 @@ void test_addTwo_allOK(void)
     uutRetVal = addTwo(&a, &b, &c);
 
     TEST_ASSERT_EQUAL(true, uutRetVal);
-    TEST_ASSERT_EQUAL(3, c);
+    TEST_ASSERT_EQUAL(4, c);
 }

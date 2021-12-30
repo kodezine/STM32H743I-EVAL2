@@ -219,19 +219,6 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle)
     HAL_NVIC_EnableIRQ(ADC3_IRQn);
   /* USER CODE BEGIN ADC3_MspInit 1 */
 
-    // Fix the analog switch initialization for all PINS and all ADC's at a single place
-    //
-    // It is important that the following function is called after any previous calls
-    // because it overwrites the effect of previous invocations because the syscfg->pmcr
-    // register is write only but documented as R/W and handled in cubemx code as R/W
-    // (upstream bug )
-    //
-    // It is important that this code is in the USER CODE section, since there is good
-    // hope that mx cube code generate is configured to NOT OVERWRITE user code sections.
-    HAL_SYSCFG_AnalogSwitchConfig(
-      SYSCFG_SWITCH_PA0 | SYSCFG_SWITCH_PA1 | SYSCFG_SWITCH_PC2 | SYSCFG_SWITCH_PC3,
-      SYSCFG_SWITCH_PA0_OPEN | SYSCFG_SWITCH_PA1_OPEN | SYSCFG_SWITCH_PC2_OPEN | SYSCFG_SWITCH_PC3_OPEN);
-
   /* USER CODE END ADC3_MspInit 1 */
   }
 }

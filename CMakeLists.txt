@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.20)
 
 project(hal
     VERSION     0.0.1
@@ -61,7 +61,7 @@ target_sources(${PROJECT_NAME}
     cubemx/Core/Src/main.c
     cubemx/Core/Src/spi.c
     cubemx/Core/Src/stm32h7xx_hal_msp.c
-    #cubemx/Core/Src/stm32h7xx_it.c
+    cubemx/Core/Src/stm32h7xx_it.c
     cubemx/Core/Src/system_stm32h7xx.c
     cubemx/Core/Src/tim.c
     cubemx/Core/Src/usart.c
@@ -153,6 +153,32 @@ write_basic_package_version_file(${PROJECT_NAME}ConfigVersion.cmake
 )
 set(${PROJECT_NAME}_LINKER_SCRIPT "STM32H743XIHx_FLASH.ld" CACHE STRING "")
 set(${PROJECT_NAME}_LINKER_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cubemx" CACHE STRING "")
+
+write_basic_package_version_file(${PROJECT_NAME}ConfigVersion.cmake
+    VERSION       ${PROJECT_VERSION}
+    COMPATIBILITY SameMajorVersion 
+)
+
+## Target installation
+install(TARGETS   ${PROJECT_NAME}
+    EXPORT        ${PROJECT_NAME}Targets
+    ARCHIVE       DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    LIBRARY       DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}
+    COMPONENT     library
+)
+
+## Target's cmake files: targets export
+install(EXPORT  ${PROJECT_NAME}Targets
+    NAMESPACE   ${PROJECT_NAME}::
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}
+)
+
+## Target's cmake files: config and version config for find_package()
+install(FILES   ${PROJECT_NAME}Config.cmake
+                ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}
+)
 
 include(CMakePrintHelpers)
 cmake_print_variables(${PROJECT_NAME}_LINKER_SCRIPT)

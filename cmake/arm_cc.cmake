@@ -12,25 +12,22 @@ target_sources(${PROJECT_NAME}
 
 target_include_directories(${PROJECT_NAME}
     PUBLIC
-        ${banshi_SOURCE_DIR}/port
-        ${CMAKE_CURRENT_LIST_DIR}/../AO/canopen
-        ${CMAKE_CURRENT_LIST_DIR}/../common/inc
-        ${CMAKE_CURRENT_LIST_DIR}/../common/test
-
         $ENV{MOCK_OUT}
     PRIVATE
-        ${canopen_SOURCE_DIR}/include
-        ${canopen_SOURCE_DIR}/target
         ${TEST_MOCK_INCLUDES}
         ${TEST_INCLUDE_DIR}
         ${OTHER_INCLUDE_DIR}
 )
 
+target_link_libraries(unity
+    rs232
+)
+
 target_link_libraries(${PROJECT_NAME}
+    rs232
     unity
     cmock
 
-    hal
     blinky_unity
 )
 
