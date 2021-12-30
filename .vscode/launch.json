@@ -2,7 +2,7 @@
     "configurations": [
         {
             "cwd": "${workspaceRoot}",
-            "executable": "./build/001_NewBranch/unity/test/ut_blinky_unity.elf",
+            "executable": "./build/2/unity/test/ut_blinky_unity.elf",
             "name": "Segger Debug",
             "request": "launch",
             "type": "cortex-debug",
@@ -14,9 +14,9 @@
             "svdFile": "${workspaceRoot}/STM32H743.svd",
             "runToMain": true,
             "preRestartCommands": [
-                "file ${workspaceRoot}/build/001_NewBranch/unity/test/ut_blinky_unity.elf",
+                "file ${workspaceRoot}/build/2/unity/test/ut_blinky_unity.elf",
                 "load",
-                "add-symbol-file ${workspaceRoot}/build/001_NewBranch/unity/test/ut_blinky_unity.elf 0x08000000",
+                "add-symbol-file ${workspaceRoot}/build/2/unity/test/ut_blinky_unity.elf 0x08000000",
                 "enable breakpoint",
                 "monitor reset"
             ]
