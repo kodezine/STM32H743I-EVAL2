@@ -20,6 +20,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        # it is important to use only presets with static upstream dependencies on main branch
+        # for reproducibility reasons
+        configs: [x86_64]
         config:
         - {
             name: "Ubuntu_Latest_GCC",
