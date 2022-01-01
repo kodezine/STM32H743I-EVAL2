@@ -21,50 +21,62 @@ target_sources(${PROJECT_NAME}
     cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc.c
     cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_adc_ex.c
     cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.c
-    cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_crc_ex.c
-    cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_crc.c
-    cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dac.c
-    cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dac_ex.c
+    cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dfsdm.c
     cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.c
     cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.c
+    cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth_ex.c
+    cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth.c
     cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.c
-    cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.c
     cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.c
     cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.c
     cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.c
     cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.c
     cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.c
     cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.c
+    cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_ltdc_ex.c
+    cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_ltdc.c
     cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.c
+    cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_nor.c
+    cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd_ex.c
+    cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pcd.c
     cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.c
     cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.c
+    cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_qspi.c
     cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.c
     cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.c
+    cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sai_ex.c
+    cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sai.c
+    cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sd_ex.c
+    cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sd.c
     cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sdram.c
-    cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi.c
-    cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi_ex.c
+    cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sram.c
     cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.c
     cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.c
     cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart.c
     cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c
+    cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_delayblock.c
     cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_fmc.c
+    cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_sdmmc.c
+    cubemx/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_ll_usb.c
 
     cubemx/startup_stm32h743xx.s
 
     cubemx/Core/Src/adc.c
-    cubemx/Core/Src/crc.c
-    cubemx/Core/Src/dac.c
-    cubemx/Core/Src/fdcan.c
+    cubemx/Core/Src/dfsdm.c
+    cubemx/Core/Src/eth.c
     cubemx/Core/Src/fmc.c
     cubemx/Core/Src/gpio.c
     cubemx/Core/Src/i2c.c
+    cubemx/Core/Src/ltdc.c
     cubemx/Core/Src/main.c
-    cubemx/Core/Src/spi.c
+    cubemx/Core/Src/quadspi.c
+    cubemx/Core/Src/sai.c
+    cubemx/Core/Src/sdmmc.c
     cubemx/Core/Src/stm32h7xx_hal_msp.c
-    cubemx/Core/Src/stm32h7xx_it.c
+    #cubemx/Core/Src/stm32h7xx_it.c
     cubemx/Core/Src/system_stm32h7xx.c
-    cubemx/Core/Src/tim.c
     cubemx/Core/Src/usart.c
+    cubemx/Core/Src/usb_otg.c
 )
 
 target_include_directories(${PROJECT_NAME}
@@ -90,17 +102,20 @@ cmake_print_variables(BOARD_TYPE)
 set(${PROJECT_NAME}_PUBLIC_HEADERS
     cubemx/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h
     cubemx/Core/Inc/adc.h
-    cubemx/Core/Inc/crc.h
-    cubemx/Core/Inc/dac.h
-    cubemx/Core/Inc/fdcan.h
+    cubemx/Core/Inc/dfsdm.h
+    cubemx/Core/Inc/eth.h
     cubemx/Core/Inc/fmc.h
     cubemx/Core/Inc/gpio.h
     cubemx/Core/Inc/i2c.h
+    cubemx/Core/Inc/ltdc.h
     cubemx/Core/Inc/main.h
-    cubemx/Core/Inc/spi.h
+    cubemx/Core/Inc/quadspi.h
+    cubemx/Core/Inc/sai.h
+    cubemx/Core/Inc/sdmmc.h
     cubemx/Core/Inc/stm327xx_hal_conf.h
     cubemx/Core/Inc/stm32h7xx_it.h
     cubemx/Core/Inc/usart.h
+    cubemx/Core/Inc/usb_otg.h
 )
 
 set_target_properties(${PROJECT_NAME}

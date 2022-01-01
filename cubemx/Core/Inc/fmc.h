@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2021 STMicroelectronics.
+  * Copyright (c) 2022 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -31,6 +31,8 @@
 
 /* USER CODE END Includes */
 
+extern NOR_HandleTypeDef hnor1;
+extern SRAM_HandleTypeDef hsram2;
 extern SDRAM_HandleTypeDef hsdram1;
 
 /* USER CODE BEGIN Private defines */
@@ -38,6 +40,10 @@ extern SDRAM_HandleTypeDef hsdram1;
 /* USER CODE END Private defines */
 
 void MX_FMC_Init(void);
+void HAL_NOR_MspInit(NOR_HandleTypeDef* hnor);
+void HAL_NOR_MspDeInit(NOR_HandleTypeDef* hnor);
+void HAL_SRAM_MspInit(SRAM_HandleTypeDef* hsram);
+void HAL_SRAM_MspDeInit(SRAM_HandleTypeDef* hsram);
 void HAL_SDRAM_MspInit(SDRAM_HandleTypeDef* hsdram);
 void HAL_SDRAM_MspDeInit(SDRAM_HandleTypeDef* hsdram);
 
