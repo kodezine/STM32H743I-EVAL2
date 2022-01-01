@@ -1,5 +1,19 @@
 {
     "configurations": [
+
+    {
+        "name": "(lldb) Launch",
+        "targetArchitecture": "x64",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "${workspaceFolder}/build/x86_64/unity/test/ut_blinky_unity.out",
+        "args": [],
+        "stopAtEntry": false,
+        "cwd": "${fileDirname}",
+        "environment": [],
+        "externalConsole": false,
+        "MIMode": "lldb"
+    },
         {
             "cwd": "${workspaceRoot}",
             "executable": "./build/2/unity/test/ut_blinky_unity.elf",
