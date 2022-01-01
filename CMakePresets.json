@@ -7,35 +7,9 @@
     },
     "configurePresets": [
         {
-            "name": "debug-b-guarded",
-            "displayName": "Debug BANSHI library on Prototype-B (guarded upstream dependencies)",
-            "description": "debug-b-guarded",
-            "generator": "Ninja",
-            "binaryDir": "${sourceDir}/build/${presetName}",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug",
-                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
-                "CMAKE_TOOLCHAIN_FILE": "./cmake/gcc_cortexM7.cmake",
-                "BOARD_TYPE": "prototype_b"
-            }
-        },
-        {
-            "name": "release-b-guarded",
-            "displayName": "Release BANSHI library Artifact on Prototype-B (guarded upstream dependencies)",
-            "description": "release-b-guarded",
-            "generator": "Ninja",
-            "binaryDir": "${sourceDir}/build/${presetName}",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release",
-                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
-                "CMAKE_TOOLCHAIN_FILE": "./cmake/gcc_cortexM7.cmake",
-                "BOARD_TYPE": "prototype_b"
-            }
-        },
-        {
-            "name": "hwtest-b-guarded",
-            "displayName": "BANSHI test apps on prototype B (guarded upstream dependencies)",
-            "description": "hwtest-b-guarded",
+            "name": "arm",
+            "displayName": "UnityOn_ARM",
+            "description": "Unity tests on arm cortex M7",
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/build/${presetName}",
             "cacheVariables": {
@@ -43,22 +17,33 @@
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
                 "CMAKE_TOOLCHAIN_FILE": "./cmake/gcc_cortexM7.cmake",
                 "BOARD_TYPE": "prototype_b",
-                "HW_UNIT_TESTS": "ON"
+                "HW_UNIT_TESTS": "1",
+                "SW_UNIT_TESTS": "0"
+            }
+        },
+        {
+            "name": "x86_64",
+            "displayName": "UnityOn_x86_64",
+            "description": "Unity tests on x86_64",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
+                "BOARD_TYPE": "x86_64",
+                "SW_UNIT_TESTS": "1",
+                "HW_UNIT_TESTS": "0"
             }
         }
     ],
     "buildPresets": [
         {
-            "name": "debug-b-guarded",
-            "configurePreset": "debug-b-guarded"
+            "name": "x86_64",
+            "configurePreset": "x86_64"
         },
         {
-           "name": "release-b-guarded",
-           "configurePreset": "release-b-guarded"
-        },
-        {
-            "name": "hwtest-b-guarded",
-            "configurePreset": "hwtest-b-guarded"
+            "name": "arm",
+            "configurePreset": "arm"
         }
     ]
 }
