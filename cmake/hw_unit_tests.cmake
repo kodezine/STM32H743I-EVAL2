@@ -8,8 +8,6 @@ add_definitions(
     -DUNITY_INCLUDE_CONFIG_H
 )
 
-#include_directories(unity/config)
-
 include(cmake/unity.cmake)
 include(cmake/cmock.cmake)
 include(cmake/MockList.cmake)
@@ -22,7 +20,7 @@ include(CMakePackageConfigHelpers)
 
 target_sources(rs232
     PRIVATE
-        unity/config/RS232_helper.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/unity/config/RS232_helper.c
 )
 
 target_include_directories(rs232
@@ -39,21 +37,12 @@ set(rs232_PUBLIC_HEADERS
         unity/config/RS232_helper.h
 )
 
-set_target_properties(${PROJECT_NAME}
-    PROPERTIES 
-        C_STANDARD          11
-        C_STANDARD_REQUIRED ON
-        C_EXTENSIONS        OFF
-        PUBLIC_HEADER       "${${PROJECT_NAME}_PUBLIC_HEADERS}"
-        EXPORT_NAME         framework
-)
-
 set_target_properties(rs232
     PROPERTIES
         C_STANDARD          11
         C_STANDARD_REQUIRED ON
         C_EXTENSIONS        OFF
-        PUBLIC_HEADER       "${${PROJECT_NAME}_PUBLIC_HEADERS}"
+        PUBLIC_HEADER       "${rs232_PUBLIC_HEADERS}"
         EXPORT_NAME         framework
 )
 
