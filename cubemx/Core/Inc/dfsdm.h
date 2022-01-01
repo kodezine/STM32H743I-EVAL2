@@ -1,9 +1,9 @@
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file    gpio.h
+  * @file    dfsdm.h
   * @brief   This file contains all the function prototypes for
-  *          the gpio.c file
+  *          the dfsdm.c file
   ******************************************************************************
   * @attention
   *
@@ -18,8 +18,8 @@
   */
 /* USER CODE END Header */
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __GPIO_H__
-#define __GPIO_H__
+#ifndef __DFSDM_H__
+#define __DFSDM_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -27,16 +27,19 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "string.h"
 
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
 
+extern DFSDM_Channel_HandleTypeDef hdfsdm1_channel1;
+
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
 
-void MX_GPIO_Init(void);
+void MX_DFSDM1_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 
@@ -45,5 +48,6 @@ void MX_GPIO_Init(void);
 #ifdef __cplusplus
 }
 #endif
-#endif /*__ GPIO_H__ */
+
+#endif /* __DFSDM_H__ */
 

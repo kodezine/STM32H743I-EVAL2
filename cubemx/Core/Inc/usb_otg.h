@@ -1,9 +1,9 @@
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file    gpio.h
+  * @file    usb_otg.h
   * @brief   This file contains all the function prototypes for
-  *          the gpio.c file
+  *          the usb_otg.c file
   ******************************************************************************
   * @attention
   *
@@ -18,8 +18,8 @@
   */
 /* USER CODE END Header */
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __GPIO_H__
-#define __GPIO_H__
+#ifndef __USB_OTG_H__
+#define __USB_OTG_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -27,16 +27,21 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "string.h"
 
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
 
+extern PCD_HandleTypeDef hpcd_USB_OTG_FS;
+extern PCD_HandleTypeDef hpcd_USB_OTG_HS;
+
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
 
-void MX_GPIO_Init(void);
+void MX_USB_OTG_FS_PCD_Init(void);
+void MX_USB_OTG_HS_PCD_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 
@@ -45,5 +50,6 @@ void MX_GPIO_Init(void);
 #ifdef __cplusplus
 }
 #endif
-#endif /*__ GPIO_H__ */
+
+#endif /* __USB_OTG_H__ */
 

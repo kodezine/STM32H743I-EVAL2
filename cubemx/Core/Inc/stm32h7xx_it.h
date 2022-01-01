@@ -6,13 +6,12 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2021 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c) 2022 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
  ******************************************************************************
   */
@@ -56,26 +55,7 @@ void SVC_Handler(void);
 void DebugMon_Handler(void);
 void PendSV_Handler(void);
 void SysTick_Handler(void);
-void ADC_IRQHandler(void);
-void FDCAN1_IT0_IRQHandler(void);
-void FDCAN2_IT0_IRQHandler(void);
-void FDCAN1_IT1_IRQHandler(void);
-void FDCAN2_IT1_IRQHandler(void);
-void TIM1_UP_IRQHandler(void);
-void TIM2_IRQHandler(void);
-void TIM3_IRQHandler(void);
-void TIM4_IRQHandler(void);
-void I2C1_EV_IRQHandler(void);
-void I2C1_ER_IRQHandler(void);
 void USART1_IRQHandler(void);
-void TIM5_IRQHandler(void);
-void UART4_IRQHandler(void);
-void UART5_IRQHandler(void);
-void UART7_IRQHandler(void);
-void TIM15_IRQHandler(void);
-void TIM16_IRQHandler(void);
-void TIM17_IRQHandler(void);
-void ADC3_IRQHandler(void);
 /* USER CODE BEGIN EFP */
 
 /* USER CODE END EFP */
