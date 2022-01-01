@@ -156,7 +156,7 @@ set(${PROJECT_NAME}_LINKER_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cubemx" CACHE STRIN
 
 write_basic_package_version_file(${PROJECT_NAME}ConfigVersion.cmake
     VERSION       ${PROJECT_VERSION}
-    COMPATIBILITY SameMajorVersion 
+    COMPATIBILITY SameMajorVersion
 )
 
 ## Target installation
@@ -190,5 +190,10 @@ if(HW_UNIT_TESTS)
 endif()
 
 else()
-    message(FATAL_ERROR "${PROJECT_NAME} can only compile with ARM cross compiler, please use appropriate toolchain.")
+    if(SW_UNIT_TESTS)
+    include(cmake/sw_unit_tests.cmake)
+    add_subdirectory(unity/test)
+    else()
+        message(FATAL_ERROR "${PROJECT_NAME} can only compile with ARM cross compiler, please use appropriate toolchain.")
+    endif()
 endif()

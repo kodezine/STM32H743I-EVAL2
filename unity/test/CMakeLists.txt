@@ -7,7 +7,7 @@ project(
 
 # Add test sources here ...
 set(TEST_SOURCES
-    ${CMAKE_CURRENT_SOURCE_DIR}/../../cubemx/Core/Src/stm32h7xx_it.c
+$<IF:${HW_UNIT_TESTS},${CMAKE_CURRENT_SOURCE_DIR}/../../cubemx/Core/Src/stm32h7xx_it.c,>
 )
 
 # DO NOT ADD ANY-THING IN THE VARIABLE BELOW
