@@ -19,7 +19,7 @@ set(TEST_INCLUDE_DIR
 
 # The ao uses following mocks
 set(TEST_MOCK_HEADERS
-
+    ${CMAKE_CURRENT_LIST_DIR}/../temp/temp.h
 )
 # All above header files but mocked sources instead
 set(TEST_MOCK_SOURCES
