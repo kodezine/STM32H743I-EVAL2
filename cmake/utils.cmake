@@ -64,7 +64,8 @@ function(generate_mocks mock_headers working_dir perl_sh_dir create_mocks_dir)
     message(STATUS "Building mocks for project: ${PROJECT_NAME}")
     foreach(element IN LISTS MOCKRAW)
         execute_process(
-            COMMAND ruby ${create_mocks_dir}/create_mocks.rb ${element}
+            COMMAND
+            ruby ${cmock_SOURCE_DIR}/lib/cmock.rb -o${create_mocks_dir}/MockConfig.yml ${element} --mock_path=$ENV{MOCK_OUT}
         )
     endforeach()
 
