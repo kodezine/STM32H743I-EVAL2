@@ -107,4 +107,4 @@ install(FILES   rs232Config.cmake
 )
 
 
-add_subdirectory(unity)
+add_subdirectory(unity/blinky)
