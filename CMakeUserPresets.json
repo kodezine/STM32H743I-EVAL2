@@ -16,7 +16,6 @@
                 "CMAKE_BUILD_TYPE": "Debug",
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
                 "CMAKE_TOOLCHAIN_FILE": "./cmake/gcc_cortexM7.cmake",
-                "BOARD_TYPE": "prototype_b",
                 "HW_UNIT_TESTS": "1",
                 "SW_UNIT_TESTS": "0"
             }
