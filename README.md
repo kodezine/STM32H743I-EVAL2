@@ -3,7 +3,9 @@
  Each git branch is protected by design not to merge to main.
 
 ## Function diagram
+
 ![Component View](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/kodezine/stm32h743_hal/master/plantUML/ComponentView.puml)
+
 ## STM32CubeMx
 This fork maintains the hardware drivers for the evaluation board, [stm32h743ieval2][5].
 
@@ -80,4 +82,4 @@ The `CMakeList.txt` file at top can be invoked by application using [ExternalPro
 [3]: https://www.st.com/en/development-tools/stm32cubemx.html
 [4]: https://cmake.org/cmake/help/latest/module/FetchContent.html
 [5]: https://www.st.com/en/evaluation-tools/stm32h743i-eval.html
-[6]: ./plantUML/ComponentView.puml
+
