@@ -1,0 +1,39 @@
+
+```plantuml
+@startuml Components
+package "HostPC" {
+   component "JLink" as host_jlink
+   component "Serial Viewer" as host_uart_viewer
+   interface "UART" as host_uart
+   component "uut" as unit_under_test
+
+   package "STM32CubeMX" {
+      component "STMCubeMX Project" as cube_project
+      interface "Linker Script" as cube_LS
+      interface "main entry" as cube_main
+      component "HAL UART" as cube_component_uart
+      interface ""putch"" as cube_component_uart_tx_byte
+
+
+      [cube_project] --> cube_main
+      [cube_project] --> cube_LS
+      [cube_project] --> cube_component_uart
+      [cube_component_uart] - cube_component_uart_tx_byte
+   }
+   package "Unity" {
+      component "Unity Test Framework" as unity_framework
+      component "CMock" as unity_cmock
+   }
+   [unity_cmock] ..> cube_component_uart_tx_byte : use
+   [unit_under_test] -- Unity : CMake
+}
+
+package "Target Hardware" {
+   component "Executable" as target_elf
+   interface "UART" as target_uart
+}
+host_uart <-- target_uart : unity test output
+host_uart --> [host_uart_viewer]
+[host_jlink] ..> [target_elf] : flash unity test case
+@enduml
+```
