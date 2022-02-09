@@ -24,7 +24,7 @@ package "HostPC" {
       component "Unity Test Framework" as unity_framework
       component "CMock" as unity_cmock
    }
-   [unity_cmock] ..> cube_component_uart_tx_byte : use
+   Unity ..> cube_component_uart_tx_byte : use
    [unit_under_test] -- Unity : CMake
 }
 
