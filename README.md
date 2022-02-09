@@ -77,7 +77,6 @@ The fork gives hardware abstract layer as
 
 The `CMakeList.txt` file at top can be invoked by application using [ExternalProject_Add][2] or [FetchContent][4].
 
-[1]: ./schematics/fwd_sch_47527-100_a04.pdf
 [2]: https://cmake.org/cmake/help/latest/module/ExternalProject.html
 [3]: https://www.st.com/en/development-tools/stm32cubemx.html
 [4]: https://cmake.org/cmake/help/latest/module/FetchContent.html
