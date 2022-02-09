@@ -24,10 +24,9 @@ package "HostPC" {
       component "Unity Test Framework" as unity_framework
       component "CMock" as unity_cmock
    }
-   Unity ..> cube_component_uart_tx_byte : use
    [unit_under_test] -- Unity : CMake
 }
-
+Unity ..> cube_component_uart_tx_byte : use
 package "Target Hardware" {
    component "Executable" as target_elf
    interface "UART" as target_uart
