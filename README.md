@@ -3,46 +3,9 @@
  Each git branch is protected by design not to merge to main.
 
 ## Function diagram
-[Component diagram][6] is as below
 
-```plantuml
-@startuml Components
-package "HostPC" {
-   component "JLink" as host_jlink
-   component "Serial Viewer" as host_uart_viewer
-   interface "UART" as host_uart
-   component "uut" as unit_under_test
+![Component View](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/kodezine/stm32h743_hal/master/plantUML/ComponentView.puml)
 
-   package "STM32CubeMX" {
-      component "STMCubeMX Project" as cube_project
-      interface "Linker Script" as cube_LS
-      interface "main entry" as cube_main
-      component "HAL UART" as cube_component_uart
-      interface ""putch"" as cube_component_uart_tx_byte
-
-
-      [cube_project] --> cube_main
-      [cube_project] --> cube_LS
-      [cube_project] --> cube_component_uart
-      [cube_component_uart] - cube_component_uart_tx_byte
-   }
-   package "Unity" {
-      component "Unity Test Framework" as unity_framework
-      component "CMock" as unity_cmock
-   }
-   [unity_cmock] ..> cube_component_uart_tx_byte : use
-   [unit_under_test] -- Unity : CMake
-}
-
-package "Target Hardware" {
-   component "Executable" as target_elf
-   interface "UART" as target_uart
-}
-host_uart <-- target_uart : unity test output
-host_uart --> [host_uart_viewer]
-[host_jlink] ..> [target_elf] : flash unity test case
-@enduml
-```
 ## STM32CubeMx
 This fork maintains the hardware drivers for the evaluation board, [stm32h743ieval2][5].
 
@@ -119,4 +82,4 @@ The `CMakeList.txt` file at top can be invoked by application using [ExternalPro
 [3]: https://www.st.com/en/development-tools/stm32cubemx.html
 [4]: https://cmake.org/cmake/help/latest/module/FetchContent.html
 [5]: https://www.st.com/en/evaluation-tools/stm32h743i-eval.html
-[6]: https://plantuml.com/plantuml/png/VPDHQzim483VzIiElxSFsziOfILiX950MT8nC4OeohbnRSj6EYqre_zzijp9gjNcqNVVdRwpTBU6X2RRDgmNiXQF2DcwCtI_ok0l0m3PjNsdK15aFpQLgZCG1awEu4-D-rmWEzILQE1NXMVKCshT4VoF3uu5bIBKfP08sSFTp_rRRj7HMl9vgogNLqVKdD0G6x5WlDjlFtzQsGDkVxzgnqryVih2lUwUK4ujfGlnVWfCDR7PE2ngs4bTzH6_sQLeAoe5xY0zpDmOIqNMTni88tik9FtmQU-ijoHFsKS5d9xvOI1axBKqZwSguEhg9l59aSLeAN31DKzJOyr5MG1uUNE13-vsXtUlpcTWZuRWknOjdZjTXmSnyF9_BArSRJiPex9rt-7eF0eMS7rzSqaOle0r6ChcT-Z_3dX7nwoseaRsmkPLsWlzY0HheOzdeJ7TgM_FA2s9GuFUb3pFiIdVtPD0U3jtKjWQ-EeyejnexAr6IUWizPPcsbzflbpDWkNpOa__99-52jUoR8GvnOsbCCXkKHrjs_m3
+

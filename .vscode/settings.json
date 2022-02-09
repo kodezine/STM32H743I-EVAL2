@@ -1,3 +1,4 @@
 {
-    "explorer.openEditors.visible": 0
+    "explorer.openEditors.visible": 0,
+    "plantuml.server": "http://kdubuntu:8080/plantuml"
 }
