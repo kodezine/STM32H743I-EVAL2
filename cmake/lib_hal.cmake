@@ -28,7 +28,6 @@ set(hal_core_SOURCES
     ${hal_core_SOURCE_DIR}/main.c
     ${hal_core_SOURCE_DIR}/quadspi.c
     ${hal_core_SOURCE_DIR}/sai.c
-    ${hal_core_SOURCE_DIR}/sdmmc.c
     ${hal_core_SOURCE_DIR}/stm32h7xx_hal_msp.c
     ${hal_core_SOURCE_DIR}/stm32h7xx_hal_timebase_tim.c
     #${hal_core_SOURCE_DIR}/stm32h7xx_it.c
@@ -69,17 +68,13 @@ set(hal_drivers_SOURCES
     ${hal_drivers_SOURCE_DIR}/stm32h7xx_hal_rcc_ex.c
     ${hal_drivers_SOURCE_DIR}/stm32h7xx_hal_sai.c
     ${hal_drivers_SOURCE_DIR}/stm32h7xx_hal_sai_ex.c
-    ${hal_drivers_SOURCE_DIR}/stm32h7xx_hal_sd.c
-    ${hal_drivers_SOURCE_DIR}/stm32h7xx_hal_sd_ex.c
     ${hal_drivers_SOURCE_DIR}/stm32h7xx_hal_sdram.c
     ${hal_drivers_SOURCE_DIR}/stm32h7xx_hal_sram.c
     ${hal_drivers_SOURCE_DIR}/stm32h7xx_hal_tim.c
     ${hal_drivers_SOURCE_DIR}/stm32h7xx_hal_tim_ex.c
     ${hal_drivers_SOURCE_DIR}/stm32h7xx_hal_uart.c
     ${hal_drivers_SOURCE_DIR}/stm32h7xx_hal_uart_ex.c
-    ${hal_drivers_SOURCE_DIR}/stm32h7xx_ll_delayblock.c
     ${hal_drivers_SOURCE_DIR}/stm32h7xx_ll_fmc.c
-    ${hal_drivers_SOURCE_DIR}/stm32h7xx_ll_sdmmc.c
 )
 
 target_sources(${PROJECT_NAME}

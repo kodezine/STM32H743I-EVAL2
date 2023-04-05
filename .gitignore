@@ -32,7 +32,7 @@ CMakeUserPresets.json
 .devcontainer/devcontainer.json
 
 # Ozone debug configuration
-*.jdebug
+*.jdebug.user
 
 # Keil uVision
 *.uvguix.*
