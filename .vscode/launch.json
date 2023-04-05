@@ -1,65 +1,17 @@
 {
     "configurations": [
-
     {
-        "name": "(lldb) Launch",
-        "targetArchitecture": "x64",
-        "type": "cppdbg",
+        "cwd": "${workspaceFolder}",
+        "executable": "${command:cmake.launchTargetPath}",
+        "name": "Debug with JLink",
         "request": "launch",
-        "program": "${workspaceFolder}/build/x86_64/unity/test/ut_blinky_unity.out",
-        "args": [],
-        "stopAtEntry": false,
-        "cwd": "${fileDirname}",
-        "environment": [],
-        "externalConsole": false,
-        "MIMode": "lldb"
-    },
-        {
-            "cwd": "${workspaceRoot}",
-            "executable": "./build/2/unity/test/ut_blinky_unity.elf",
-            "name": "Segger Debug",
-            "request": "launch",
-            "type": "cortex-debug",
-            "armToolchainPath": "/Applications/ARM/bin",
-            "ipAddress": "192.168.178.34",
-            "servertype": "jlink",
-            "interface": "jtag",
-            "device": "STM32H743XI",
-            "svdFile": "${workspaceRoot}/STM32H743.svd",
-            "runToMain": true,
-            "preRestartCommands": [
-                "file ${workspaceRoot}/build/2/unity/test/ut_blinky_unity.elf",
-                "load",
-                "add-symbol-file ${workspaceRoot}/build/2/unity/test/ut_blinky_unity.elf 0x08000000",
-                "enable breakpoint",
-                "monitor reset"
-            ]
-        },
-        {
-            "cwd": "${workspaceRoot}",
-            "executable": "./build/PLAT-152/TS7x_MotorController_MK3.elf",
-            "name": "STLinkV2 Debug",
-            "request": "launch",
-            "type": "cortex-debug",
-            "armToolchainPath": "/Applications/ARM/bin",
-            "servertype": "openocd",
-            "interface": "jtag",
-            "device": "STM32H743XI",
-            "svdFile": "${workspaceRoot}/application/linker/STM32H743.svd",
-            "runToMain": true,
-            "configFiles": [
-                "interface/stlink.cfg",
-                "target/stm32h7x.cfg"
-            ],
-            "debuggerArgs": [
-                "-d",
-                "${workspaceRoot}"
-            ],
-            "preRestartCommands": [
-                "load",
-                "enable breakpoint",
-                "monitor reset"
-            ]
-        }
+        "type": "cortex-debug",
+        "device": "STM32H743XI",
+        "ipAddress": "192.168.3.222",
+        "armToolchainPath": "/Applications/ARM/bin",
+        "runToEntryPoint": "main",
+        "showDevDebugOutput": "none",
+        "servertype": "jlink"
+    }
     ]
 }
