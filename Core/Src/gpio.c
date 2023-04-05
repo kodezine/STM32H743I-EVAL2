@@ -34,16 +34,26 @@
 
 /** Configure pins
      PB5   ------> USB_OTG_HS_ULPI_D7
+     PC10   ------> SDMMC1_D2
+     PC11   ------> SDMMC1_D3
      PC15-OSC32_OUT (OSC32_OUT)   ------> RCC_OSC32_OUT
      PC14-OSC32_IN (OSC32_IN)   ------> RCC_OSC32_IN
      PE2   ------> SAI4_CK1
+     PC12   ------> SDMMC1_CK
+     PB9   ------> SDMMC1_CDIR
+     PB8   ------> SDMMC1_CKIN
+     PD2   ------> SDMMC1_CMD
      PA10   ------> USB_OTG_FS_ID
      PA9   ------> USB_OTG_FS_VBUS
      PC13   ------> RTC_TAMP1
+     PC8   ------> SDMMC1_D0
+     PC9   ------> SDMMC1_D1
      PA8   ------> RCC_MCO_1
      PA12   ------> USB_OTG_FS_DP
      PA11   ------> USB_OTG_FS_DM
      PI11   ------> USB_OTG_HS_ULPI_DIR
+     PC7   ------> SDMMC1_D123DIR
+     PC6   ------> SDMMC1_D0DIR
      PH1-OSC_OUT (PH1)   ------> RCC_OSC_OUT
      PH0-OSC_IN (PH0)   ------> RCC_OSC_IN
      PC0   ------> USB_OTG_HS_ULPI_STP
@@ -95,6 +105,16 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Alternate = GPIO_AF10_OTG2_HS;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
+  /*Configure GPIO pins : PCPin PCPin PCPin PCPin
+                           PCPin */
+  GPIO_InitStruct.Pin = SDIO1_D2_Pin|SDIO1_D3_Pin|SDIO1_CLK_Pin|SDIO1_D0_Pin
+                          |SDIO1_D1_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  GPIO_InitStruct.Alternate = GPIO_AF12_SDIO1;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
   /*Configure GPIO pin : PtPin */
   GPIO_InitStruct.Pin = FDCAN1_STBY_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -109,6 +129,22 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   GPIO_InitStruct.Alternate = GPIO_AF10_SAI4;
   HAL_GPIO_Init(PDM1_CLK_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PBPin PBPin */
+  GPIO_InitStruct.Pin = SDIO1_CDIR_Pin|SDIO1_CKIN_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  GPIO_InitStruct.Alternate = GPIO_AF7_SDIO1;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PtPin */
+  GPIO_InitStruct.Pin = SDIO1_CMD_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  GPIO_InitStruct.Alternate = GPIO_AF12_SDIO1;
+  HAL_GPIO_Init(SDIO1_CMD_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PAPin PAPin PAPin */
   GPIO_InitStruct.Pin = USB_FS1_ID_Pin|USB_FS1_DP_Pin|USB_FS1_DM_Pin;
@@ -139,6 +175,14 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   GPIO_InitStruct.Alternate = GPIO_AF10_OTG2_HS;
   HAL_GPIO_Init(ULPI_DIR_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PCPin PCPin */
+  GPIO_InitStruct.Pin = SDIO1_D123DIR_Pin|SDIO1_D0DIR_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  GPIO_InitStruct.Alternate = GPIO_AF8_SDIO1;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pin : PtPin */
   GPIO_InitStruct.Pin = ULPI_STP_Pin;

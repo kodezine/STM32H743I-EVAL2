@@ -25,7 +25,6 @@
 #include "ltdc.h"
 #include "quadspi.h"
 #include "sai.h"
-#include "sdmmc.h"
 #include "usart.h"
 #include "gpio.h"
 #include "fmc.h"
@@ -103,7 +102,6 @@ int main(void)
   MX_LTDC_Init();
   MX_QUADSPI_Init();
   MX_SAI1_Init();
-  MX_SDMMC1_SD_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
   app_main();
