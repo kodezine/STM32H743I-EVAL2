@@ -72,6 +72,7 @@ void HAL_DFSDM_ChannelMspInit(DFSDM_Channel_HandleTypeDef* dfsdm_channelHandle)
   /* USER CODE BEGIN DFSDM1_MspInit 0 */
 
   /* USER CODE END DFSDM1_MspInit 0 */
+
   /** Initializes the peripherals clock
   */
     PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_DFSDM1;

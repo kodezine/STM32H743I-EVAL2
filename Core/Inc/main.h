@@ -371,6 +371,7 @@ void Error_Handler(void);
 #define RS232_TX_GPIO_Port GPIOB
 #define D13_Pin GPIO_PIN_8
 #define D13_GPIO_Port GPIOD
+
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

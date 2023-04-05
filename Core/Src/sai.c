@@ -122,6 +122,7 @@ void HAL_SAI_MspInit(SAI_HandleTypeDef* saiHandle)
     if(saiHandle->Instance==SAI1_Block_A)
     {
     /* SAI1 clock enable */
+
   /** Initializes the peripherals clock
   */
     PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_SAI1;
@@ -161,6 +162,7 @@ void HAL_SAI_MspInit(SAI_HandleTypeDef* saiHandle)
     if(saiHandle->Instance==SAI1_Block_B)
     {
       /* SAI1 clock enable */
+
   /** Initializes the peripherals clock
   */
     PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_SAI1;

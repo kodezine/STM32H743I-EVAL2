@@ -37,4 +37,4 @@ CMakeUserPresets.json
 # Keil uVision
 *.uvguix.*
 MDK-ARM/DebugConfig/*.dbgconf
-!MDK-ARM/STM32F0308-DISCO/STM32F0308-DISCO.sct
+!MDK-ARM/STM32H743I-EVAL2/STM32H743I-EVAL2.sct
