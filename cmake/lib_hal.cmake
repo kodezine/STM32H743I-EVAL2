@@ -33,7 +33,7 @@ set(hal_core_SOURCES
     ${hal_core_SOURCE_DIR}/stm32h7xx_hal_timebase_tim.c
     #${hal_core_SOURCE_DIR}/stm32h7xx_it.c
     ${hal_core_SOURCE_DIR}/system_stm32h7xx.c
-
+    ${hal_core_SOURCE_DIR}/usart.c
 )
 
 set(hal_drivers_CMSIS_device_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Drivers/CMSIS/Device/ST/STM32H7xx/Include")
