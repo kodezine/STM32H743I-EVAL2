@@ -2,48 +2,77 @@
     "version": 2,
     "cmakeMinimumRequired": {
         "major": 3,
-        "minor": 20,
+        "minor": 22,
         "patch": 0
     },
     "configurePresets": [
-        {
-            "name": "arm",
-            "displayName": "UnityOn_ARM",
-            "description": "Unity tests on arm cortex M7",
-            "generator": "Ninja",
-            "binaryDir": "${sourceDir}/build/${presetName}",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug",
-                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
-                "CMAKE_TOOLCHAIN_FILE": "./cmake/gcc_cortexM7.cmake",
-                "BOARD_TYPE": "prototype_b",
-                "HW_UNIT_TESTS": "1",
-                "SW_UNIT_TESTS": "0"
-            }
+    {
+        "name": "Blinky_AC6_Demo",
+        "displayName": "Blinky_AC6_Demo",
+        "description": "Blinky STM32H743I-EVAL2 board demo with AC6",
+        "generator": "Ninja",
+        "environment": {
+            "CORTEX_TYPE": "cm7"
         },
-        {
-            "name": "x86_64",
-            "displayName": "UnityOn_x86_64",
-            "description": "Unity tests on x86_64",
-            "generator": "Ninja",
-            "binaryDir": "${sourceDir}/build/${presetName}",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug",
-                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
-                "BOARD_TYPE": "x86_64",
-                "SW_UNIT_TESTS": "1",
-                "HW_UNIT_TESTS": "0"
-            }
+        "binaryDir": "${sourceDir}/build/${presetName}",
+        "cacheVariables": {
+            "FETCHCONTENT_UPDATES_DISCONNECTED": "OFF",
+            "DEMO": false,
+            "CMAKE_BUILD_TYPE": "Debug",
+            "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
+            "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/_deps/cmake-toolchains-src/armclang-community.cmake",
+            "GITHUB_BRANCH_TOOLCHAIN": "HEAD"
         }
+    },
+    {
+        "name": "Blinky_GCC_Demo",
+        "displayName": "Blinky_GCC_Demo",
+        "description": "Blinky STM32H743I-EVAL2 board demo with arm gcc",
+        "generator": "Ninja",
+        "environment": {
+            "CORTEX_TYPE": "cm7"
+        },
+        "binaryDir": "${sourceDir}/build/${presetName}",
+        "cacheVariables": {
+            "FETCHCONTENT_UPDATES_DISCONNECTED": "OFF",
+            "DEMO": false,
+            "CMAKE_BUILD_TYPE": "Debug",
+            "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
+            "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/_deps/cmake-toolchains-src/arm-none-eabi-gcc.cmake",
+            "GITHUB_BRANCH_TOOLCHAIN": "HEAD"
+        }
+    },
+    {
+        "name": "Blinky_llvm_Demo",
+        "displayName": "Blinky_llvm_Demo",
+        "description": "Blinky STM32H743I-EVAL2 board demo with llvm clang",
+        "generator": "Ninja",
+        "environment": {
+            "CORTEX_TYPE": "cm7"
+        },
+        "binaryDir": "${sourceDir}/build/${presetName}",
+        "cacheVariables": {
+            "FETCHCONTENT_UPDATES_DISCONNECTED": "OFF",
+            "DEMO": false,
+            "CMAKE_BUILD_TYPE": "Debug",
+            "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
+            "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/_deps/cmake-toolchains-src/llvm-clang-arm.cmake",
+            "GITHUB_BRANCH_TOOLCHAIN": "HEAD"
+        }
+    }
     ],
     "buildPresets": [
         {
-            "name": "x86_64",
-            "configurePreset": "x86_64"
+            "name": "Blinky_AC6_Demo",
+            "configurePreset": "Blinky_AC6_Demo"
         },
         {
-            "name": "arm",
-            "configurePreset": "arm"
+            "name": "Blinky_GCC_Demo",
+            "configurePreset": "Blinky_GCC_Demo"
+        },
+        {
+            "name": "Blinky_llvm_Demo",
+            "configurePreset": "Blinky_llvm_Demo"
         }
     ]
 }
